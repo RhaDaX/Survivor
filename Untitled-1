@@ -1,0 +1,96 @@
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ *
+ * @format
+ * @flow
+ */
+
+import React, {Component} from 'react';
+import { AppRegistry, StyleSheet, Text, View, TextInput} from 'react-native';
+import Emoticons from 'react-native-emoticons';
+
+
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { text: '' };
+  }
+  render() {
+    return (
+      <View style={styles.container}>
+        <TextInput
+          placeholder='Entrer une adresse'
+          onChangeText={(text) => this.setState({text})}
+        />
+        <Text style={{ padding: 10, fontSize: 42 }}>
+          {this.state.text.split(' ').map((word) => word && '🍕').join(' ')}
+        </Text>
+        <Emoticons
+          onEmoticonPress={this._onEmoticonPress.bind(this)}
+          onBackspacePress={this._onBackspacePress.bind(this)}
+          show={this.state.showEmoticons}
+          concise={true}
+          showHistoryBar={true}
+          showPlusBar={true}
+        />
+
+      </View>
+     
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#004C54',
+    fontSize: 40,
+    textAlign: 'center'
+  },
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    fontWeight: 'bold',
+    margin: 10,
+    color: '#ffffff'
+  },
+  instructions: {
+    textAlign: 'center',
+    color: '#333333',
+    marginBottom: 5,
+    color: '#ffffff'
+  },
+});
+
+AppRegistry.registerComponent('OSM_APP', () => App);
+
+import React, { Component } from 'react';
+import { AppRegistry, Text, TextInput, View } from 'react-native';
+
+export default class PizzaTranslator extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {text: ''};
+  }
+
+  render() {
+    return (
+      <View style={{padding: 10}}>
+        <TextInput
+          style={{height: 40}}
+          placeholder="Type here to translate!"
+          onChangeText={(text) => this.setState({text})}
+        />
+        <Text style={{padding: 10, fontSize: 42}}>
+          {this.state.text.split(' ').map((word) => word && '🍕').join(' ')}
+        </Text>
+      </View>
+    );
+  }
+}
+
+// skip this line if using Create React Native App
+AppRegistry.registerComponent('AwesomeProject', () => PizzaTranslator);

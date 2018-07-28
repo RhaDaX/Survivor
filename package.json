@@ -1,0 +1,32 @@
+{
+  "name": "OSM_app",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
+  },
+  "dependencies": {
+    "global": "^4.3.2",
+    "react": "16.4.1",
+    "react-native": "0.56.0",
+    "react-native-emoji": "^1.2.0",
+    "react-native-emoticons": "^1.0.12",
+    "react-native-maps": "github:mikemorris/react-native-maps#ef5c839252e427268ae2ebbf4f0cced1cb51fed6",
+    "react-navigation": "^2.6.2"
+  },
+  "devDependencies": {
+    "babel-jest": "23.4.0",
+    "babel-preset-react-native": "^5",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jsx-a11y": "^6.1.0",
+    "eslint-plugin-react": "^7.10.0",
+    "jest": "23.4.0",
+    "react-test-renderer": "16.4.1"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
