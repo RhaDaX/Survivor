@@ -29,7 +29,8 @@ export default class Clock extends Component {
     super(props);
     this.state = {
        minute: 0,
-       hour: 0
+       hour: 0,
+       day: false
     };
   }
 
@@ -40,6 +41,8 @@ export default class Clock extends Component {
           this.setState( prevState => ({
             minute: prevState.minute + 10
           }))
+          //parseInt(this.state.hour) < 2 ? this.state.day = true : this.state.day = false
+          this.set_day(this.state.hour)
         } else {
           if(is_hourMax(this.state.hour) == false) {
             this.setState( prevState => ({
@@ -56,6 +59,10 @@ export default class Clock extends Component {
         }
     }, 700)
 
+  }
+
+  set_day()  {
+    this.props.set_style_map(this.state.hour);
   }
 
   render () {

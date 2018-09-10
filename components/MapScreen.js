@@ -11,6 +11,9 @@ export default class MapScreen extends Component {
   constructor() {
     super();
     this.state = {
+      is_night: NightStyle,
+      night: 'true',
+      day: 0,
       region: {
         latitude: 44.197263,
         longitude: 0.620840,
@@ -22,20 +25,74 @@ export default class MapScreen extends Component {
   static navigationOptions = {
     header: null
   }
+
+  set_style_map = (day) => {
+
+    this.setState({
+      day: day
+    })
+
+    if(parseInt(this.state.day) <= 2){
+      this.setState({
+        is_night: NightStyle,
+        night: 'true'
+      })
+    } else {
+      this.setState({
+        is_night: DayStyle,
+        night: 'false'
+      })
+    }
+  }
+
+  // componentDidMount () {
+  //   setInterval( () => {
+  //     if(parseInt(this.state.day) <= 2){
+  //       this.setState({
+  //         is_night: NightStyle,
+  //         night: 'true'
+  //       })
+  //     } else {
+  //       this.setState({
+  //         is_night: DayStyle,
+  //         night: 'false'
+  //       })
+  //     }
+  //   }, 700)
+  // }
+  update() {
+    setInterval( () => {
+    if(parseInt(this.state.day) <= 2){
+      this.setState({
+        is_night: NightStyle,
+
+      })
+    } else {
+      this.setState({
+        is_night: DayStyle,
+
+      })
+    }
+    }, 700)
+  }
+
   render () {
     return (
       <MapView
           style={{flex: 1, width: '100%', height: '100%'}}
-          customMapStyle= { DayStyle }
-          provider={PROVIDER_GOOGLE}
+          customMapStyle= {this.state.is_night}
+          //provider={PROVIDER_GOOGLE}
+          showsPointsOfInterest={true}
           initialRegion={{
            latitude: 44.197263,
            longitude: 0.620840,
-           latitudeDelta: 0.0922,
-           longitudeDelta: 0.0421,
+           latitudeDelta: 0.0122,
+           longitudeDelta: 0.0121,
          }}
        >
-          <Clock time={this.state.hour}/>
+          <Clock  set_style_map={this.set_style_map}/>
+          <Text style={styles.textStyle}>{this.state.night}</Text>
+          <Text style={styles.textStyle}>{(this.state.day)}</Text>
           <MapView.Marker
              coordinate={this.state.region}
              image={require('../img/gas-mask.png')}
