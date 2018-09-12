@@ -61,6 +61,9 @@ PODS:
     - React/Core
   - React/RCTBlob (0.56.0):
     - React/Core
+  - React/RCTCameraRoll (0.56.0):
+    - React/Core
+    - React/RCTImage
   - React/RCTGeolocation (0.56.0):
     - React/Core
   - React/RCTImage (0.56.0):
@@ -70,7 +73,11 @@ PODS:
     - React/Core
   - React/RCTNetwork (0.56.0):
     - React/Core
+  - React/RCTPushNotification (0.56.0):
+    - React/Core
   - React/RCTSettings (0.56.0):
+    - React/Core
+  - React/RCTTest (0.56.0):
     - React/Core
   - React/RCTText (0.56.0):
     - React/Core
@@ -95,11 +102,15 @@ DEPENDENCIES:
   - React/DevSupport (from `../node_modules/react-native`)
   - React/RCTActionSheet (from `../node_modules/react-native`)
   - React/RCTAnimation (from `../node_modules/react-native`)
+  - React/RCTBlob (from `../node_modules/react-native`)
+  - React/RCTCameraRoll (from `../node_modules/react-native`)
   - React/RCTGeolocation (from `../node_modules/react-native`)
   - React/RCTImage (from `../node_modules/react-native`)
   - React/RCTLinkingIOS (from `../node_modules/react-native`)
   - React/RCTNetwork (from `../node_modules/react-native`)
+  - React/RCTPushNotification (from `../node_modules/react-native`)
   - React/RCTSettings (from `../node_modules/react-native`)
+  - React/RCTTest (from `../node_modules/react-native`)
   - React/RCTText (from `../node_modules/react-native`)
   - React/RCTVibration (from `../node_modules/react-native`)
   - React/RCTWebSocket (from `../node_modules/react-native`)
@@ -139,6 +150,6 @@ SPEC CHECKSUMS:
   react-native-maps: 066c2afcc89e18726377bcc685315f989ca22449
   yoga: b1ce48b6cf950b98deae82838f5173ea7cf89e85
 
-PODFILE CHECKSUM: 4600bbfb922ae6900bc127b8ef931d958e75c86d
+PODFILE CHECKSUM: 5338ccee1f4174a5bd5c9b90630151a0a008a543
 
 COCOAPODS: 1.5.2

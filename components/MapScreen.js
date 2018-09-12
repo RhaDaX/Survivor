@@ -2,10 +2,13 @@ import React, { Component } from 'react';
 import { Text, AppRegistry, StyleSheet, View } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
-import { Marker, Callout } from 'react-native-maps';
-import Clock from './Clock'
+import { Marker, Callout, UrlTile } from 'react-native-maps';
+import Clock from './Clock';
 import DayStyle from './MapStyles/day.json';
 import NightStyle from './MapStyles/night.json';
+import MapViewDirections from 'react-native-maps-directions';
+
+const GOOGLE_MAPS_KEY = 'AIzaSyB5lBJ6TPOzrgRMoZ3z7CoCMmw5L-PYffI';
 
 export default class MapScreen extends Component {
   constructor() {
@@ -78,11 +81,13 @@ export default class MapScreen extends Component {
 
   render () {
     return (
+
       <MapView
           style={{flex: 1, width: '100%', height: '100%'}}
           customMapStyle= {this.state.is_night}
-          //provider={PROVIDER_GOOGLE}
+          provider={PROVIDER_GOOGLE}
           showsPointsOfInterest={true}
+          onPoiClick={ () => console.log('cliclicli') }
           initialRegion={{
            latitude: 44.197263,
            longitude: 0.620840,
@@ -90,6 +95,12 @@ export default class MapScreen extends Component {
            longitudeDelta: 0.0121,
          }}
        >
+         <MapViewDirections
+           origin={{latitude: 44.197263, longitude: 0.620840}}
+           destination={{latitude: 44.205966, longitude: 0.619872}}
+           apikey={GOOGLE_MAPS_KEY}
+          />
+
           <Clock  set_style_map={this.set_style_map}/>
           <Text style={styles.textStyle}>{this.state.night}</Text>
           <Text style={styles.textStyle}>{(this.state.day)}</Text>
@@ -114,6 +125,9 @@ export default class MapScreen extends Component {
   }
 }
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
   textStyle: {
     fontSize: 16,
     alignSelf: 'center',
